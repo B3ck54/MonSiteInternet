@@ -1,0 +1,13 @@
+App\Entity\Edition:
+  folio:
+    name: Folio
+  livre_de_poche:
+    name: Livre de poche
+  j_aime_lire:
+    name: J'aime Lire
+  librio:
+    name: Librio
+  editions_de_minuit:
+    name: Les Editions de Minuit
+  pocket:
+    name: Pocket

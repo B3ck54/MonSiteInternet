@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="jumbotron">
+    <legend>Livres</legend>
+    <div class="active" >
+        {% for livre in livres %}
+       <h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
+        {% endfor %}
+    <div>
+    </br>
+    <a href="{{ path('add') }}" class="btn btn-primary">Ajouter</a></div>
+        <br>
+    <a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a></div>
+
+</div>
+{% endblock %}

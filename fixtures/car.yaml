@@ -1,0 +1,56 @@
+App\Entity\Livres:
+  livre_1:
+    titre: Beignets de tomates vertes
+    auteur: Fannie Flagg
+    resume: Au sud de l'Amérique profonde, en Alabama, un café au bord d'une voie ferrée ... Ninny,fringante octogénaire, se souvient et raconte à Evelyn, une femme au foyer à l'existence monotone, les incroyableshistoires de la petite ville de Whistle Stop.
+    prix: 8
+    editions: ['@folio', '@librio']
+    categorie: Roman
+    etat: Bon état
+
+  livre_2:
+    titre: On achève bien les chevaux
+    auteur: Horace McCoy
+    resume: Hollywood avant la Seconde Guerre mondiale. Robert Syberten rencontre Gloria Bettie. Comme elle, il estfigurant au cinéma. Mais loin d'avoir réalisé leurs rêves, ils n'ont eu qu'un long parcours chaotique seméd'échecs. Désœuvrés et sans argent, ils décident de s'inscrire à un marathon de danse dans l'espoir de décrocher les 1 000 dollars de récompense et de se faire remarquer par un des producteurs formant le public quotidien de ces soirées. Il ne leur reste plus qu'à tournoyer des semaines entières au rythme de l'orchestre. Écrit à la suite de la grande dépression de 1929, "On achève bien les chevaux" est le premier roman noir d'Horace McCoy. Ce texte intemporel, qui n'a rien perdu de sa force évocatrice, est une violente dénonciation du rêve américain. Particulièrement noir et désespéré, il s'attache à explorer l'envers du décor en décrivant la misère de ceux prêts à toutes les humiliations pour pouvoir gagner simplement de quoi survivre.Sidney Pollack en a tiré un très beau film avec notamment Jane Fonda dans le rôle principal. Christophe Dupuis
+    prix: 6
+    editions: ['@livre_de_poche', '@librio']
+    categorie: Essai
+    etat: Mauvais état
+
+  livre_3:
+    titre: Carmen
+    auteur: Prosper Mérimée
+    resume: La semaine suivante, à Cordoue, le narrateur fait la connaissance de Carmen, une jolie gitane. Cette fois, c'est José Navarro qui le sauve du guet-apens dans lequel Carmen voulait le faire tomber. Quelques mois plus tard, le narrateur rend visite à José, la veille de son exécution.
+    prix: 6
+    editions: ['@editions_de_minuit', '@j_aime_lire']
+    categorie: Roman
+    etat: Neuf
+
+  livre_4:
+    titre: Destinataire Inconnu
+    auteur: Cathleen Schine
+    resume: Quarantenaire, divorcée, libraire, fantasque et indépendante, Helen mène une vie sereine jusqu'à ce qu'elle tombe sur une mystérieuse lettre d'amour ne contenant aucun indice permettant de savoir qui en est l'auteur, ni le destinataire. Elle porte alors un oeil neuf sur les hommes de son entourage, en particulier sur Johnny, 20 ans, étudiant, employé pour l'été à librairie. Leur liaison se change bientôt en une histoire d'amour qui amène Helen à reconsidérer sa vie, ses valeurs morales...
+    prix: 4
+    editions: ['@pocket']
+    categorie: Roman
+    etat: Bon état
+
+  livre_5:
+    titre: Les fleurs du mal
+    auteur: Charles Baudelaire
+    resume: le lyrisme subjectif s'efface devant cette « impersonnalité volontaire » que Baudelaire a lui-même postulée ; la nature et ses retours cycliques cèdent la place au décor urbain et à ses changements marqués par l'Histoire, et il arrive que le poète accède au beau par l'expérience de la laideur. Quant au mal affiché dès le titre du recueil, s'il nous apporte la preuve que l'art ici se dénoue de la morale, il n'en préserve pas moins la profonde spiritualité des poèmes. D'où la stupeur que Baudelaire put ressentir quand le Tribunal de la Seine condamna la première édition de 1857 pour « outrage à la morale publique et aux bonnes moeurs » et l'obligea à retrancher six pièces du volume - donc à remettre en cause la structure du recueil qu'il avait si précisément concertée. En 1861, la seconde édition fut augmentée de trente-cinq pièces, puis Baudelaire continua d'écrire pour son livre d'autres poèmes encore. Mais après la censure, c'est la mort qui vint l'empêcher de donner aux Fleurs du Mal la forme définitive qu'il souhaitait - et que nous ne connaîtrons jamais.
+    prix: 6
+    editions: ['@livre_de_poche']
+    categorie: Poésie
+    etat: Mauvais état
+
+  livre_6:
+    titre: Le joueur d'échecs
+    auteur: Stéphane Zweig
+    resume: Qui est cet inconnu capable d’en remontrer au grand Czentovic, champion mondial des échecs, véritable prodige aussi fruste qu’antipathique ? Peut-on le croire, quand il affirme qu’il n’a pas joué depuis plus de vingt ans ? Les circonstances dans lesquelles l’homme a acquis cette science sont terribles. Elles nous renvoient aux expérimentations nazies sur les effets de l’isolement absolu, lorsque, aux frontières de la folie, entre deux interrogatoires, le cerveau humain parvient à déployer ses facultés les plus étranges. Une fable inquiétante, fantastique, qui, comme le dit un personnage avec une ironie douloureuse, « pourrait servir d’illustration à la charmante époque où nous vivons ».
+    prix: 7
+    editions: ['@pocket', '@j_aime_lire']
+    categorie: Nouvelle
+    etat: Neuf
+
+

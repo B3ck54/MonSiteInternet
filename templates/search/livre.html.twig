@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        <div class="jumbotron">
+            <legend>Recherche Avancée</legend>
+        {{ form(search_form) }}
+        </div>
+
+        {% if app.request.method == 'POST'%}
+            <div class="jumbotron">
+                {% if livres |length == 0 %}
+                    <legend> Aucun résultat pour cette recherche</legend>
+                    {% else %}
+                        <legend>Résultat de la recherche</legend>
+                        <hr class ="my-4">
+
+                        {% for livre in livres %}
+                            <h2>Titre : {{ livre.titre }}</h2>
+                            <h2>Prix : {{ livre.prix }} €</h2>
+                            {% if livre.image.name is defined %}
+                                <img src="{{ asset('images/')~livre.image.name}}">
+                                </br>
+                                </br>
+
+                                {% else %}
+                                <p>Pas d'image</p>
+                            {% endif %}
+
+                            {%  for keyword in livre.keywords %}
+                                <p class="badge badge-info">{{ keyword.name }} {% if not loop.last %}, {% endif %}</p>
+                            {% endfor %}
+
+                            {% if livre.editions |length > 0 %}
+                                 <p>
+                                {% for edition in livre.editions %}<a class="btn btn-primary">{{ edition.name }}</a>{% endfor %}
+                                </p>
+                            {% endif %}
+                            <hr class ="my-4">
+                        {% endfor %}
+
+                {% endif %}
+            </div>
+         {% endif %}
+
+            <a href="{{ path('home') }}">Accueil</a>
+    </div>
+{% endblock %}
+

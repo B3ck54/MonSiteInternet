@@ -1,0 +1,52 @@
+{{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+<div class="input-field col s12">
+    <label>Titre</label>
+    {{ form_widget(form.titre) }}
+    </br>
+    </br>
+    <label>Auteur</label>
+    {{ form_widget(form.auteur) }}
+    </br>
+    </br>
+    <label>Résumé</label>
+    {{ form_widget(form.resume) }}
+    </br>
+    </br>
+    <label>Prix</label>
+    {{ form_widget(form.prix) }}
+    </br>
+    </br>
+
+    <button class="addKeyword btn btn-primary">Ajouter un mot-clé</button>
+    {{ form_widget(form.keywords) }}
+    {#si j'ai une image je l'affiche#}
+    {#On récupère l'image courante#}
+    {#On récupère l'id - Si l'id de mon image est défini à ce moment je l'affiche#}
+
+    <div class="form-group">
+        <label for="exampleSelect1">Editions</label>
+           {{ form_widget(form.editions) }}
+        </select>
+    </div>
+
+
+    <div class="file-field input-field">
+        {% if form.image.vars.value.id is defined %}
+            <img src="{{ asset('images/')~form.image.vars.value.name }}" class="responsive-img">
+        {% endif %}
+        <div class="btn">
+            <span>{{ (form.image.vars.value.name is defined) ? "Modifier l'" : "Ajouter une "}} image</span>
+            {{ form_row(form.image) }}
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+    </div>
+
+
+    </br>
+        </br>
+
+</div>
+
+

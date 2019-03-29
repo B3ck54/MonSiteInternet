@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        {#******************************LIVRE SELECTIONNE******************************#}
+        <p>N° : {{ livre.id }}</p>
+        <h3 >Votre livre : {{ livre.titre }}</h3> <h1><strong></strong></h1>
+        <p class="lead">Ecrit par {{ livre.auteur }}</p>
+        <hr class="my-4">
+
+        {#************************************IMAGE************************************#}
+        <div class="container">
+            {%  if livre.image.name is defined %}
+                <img src="{{ asset ("images/")~livre.image.name }}" alt="photo livre">
+            {% else %}
+                <p>Pas d'image</p>
+            {% endif %}
+        </div>
+        </br>
+
+        <p>{{ livre.resume }}</p>
+        <h3>{{ livre.prix }}€</h3>
+
+
+
+        </br>
+
+        {#******************************AFFICHAGE MOT-CLES*****************************#}
+        <div class="lead">
+            {% for keyword in livre.keywords %} {#appelle la méthode getKeyword#}
+                <p class="badge badge-primary">{{ keyword.name }} {% if not loop.last %},{% endif %}</p>
+                {#j'affiche ses propriétés pour chaque objet courant#}
+                {#si je suis pas au dernier tour on met une virgule#}
+            {% endfor %}
+        {#*****************************************************************************#}
+        </br>
+
+            {%  if livre.editions |length > 0 %}
+                <p> <strong>Editions :</strong>
+                {% for edition in livre.editions %}<a class="badge badge-info">&nbsp;&nbsp;{{ edition.name}}&nbsp;&nbsp;{% endfor %}</a>
+                </p>
+            {% endif %}
+        </div>
+
+        {#******************************BOUTON MODIFIER ET SUPPRIMER******************************#}
+        <p class="lead">
+
+
+            <a href="{{ path('edit', {'id': livre.id }) }}" class="badge badge-primary">Modifier</a>
+            <a href="{{ path('delete', {'id': livre.id }) }}" class="badge badge-primary">Supprimer</a>
+        </p>
+        <a class="btn btn-primary btn-lg" href="{{ path('home') }}" role="button">Retour</a>
+
+    </div>
+{% endblock %}
+

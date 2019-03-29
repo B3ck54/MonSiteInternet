@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="jumbotron">
+    <form>
+        <fieldset>
+            <legend>Contactez-nous</legend>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleTextarea">Votre message</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
+
+
+            <div class="form-group">
+            <div class="form-group">
+                <label for="exampleInputFile">Pièce-jointe</label>
+                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            </div>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
