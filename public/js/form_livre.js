@@ -63,7 +63,7 @@ $(document).ready(function(){
     }
 
     function deleteButton($prototype) {
-        var $deleteLink = $('<a href="#" class="btn waves-effect waves-light red">Annuler</a>');
+        let $deleteLink = $('<a href="#" class="btn waves-effect waves-light red">Annuler</a>');
 
         $prototype.append($deleteLink);
 

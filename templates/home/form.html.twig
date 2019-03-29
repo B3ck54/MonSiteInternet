@@ -18,6 +18,12 @@
     </br>
 
     <button class="addKeyword btn btn-primary">Ajouter un mot-clé</button>
+        <div class=".error-delete-keyword" style="display: none">
+            <div class="card-panel">
+                <span class="red-text text-darken-2">Erreur lors de la suppression du mot-clé</span>
+            </div>
+        </div>
+
     {{ form_widget(form.keywords) }}
     {#si j'ai une image je l'affiche#}
     {#On récupère l'image courante#}

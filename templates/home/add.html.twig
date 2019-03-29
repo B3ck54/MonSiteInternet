@@ -31,6 +31,8 @@
         // recupere le nombre d'input keyword
         let index = $container.find(':input').length;// je compte le nombre d'input
 
+        $container.find('label.required').remove(); // supprime le label des keywords (i++)
+
         $('.addKeyword').click(function(e) {
             e.preventDefault(); //empêche la soumission du formulaire
             addKeyword($container);
@@ -70,6 +72,9 @@
                 .replace(/__name__/g, index)
             ;
             let $prototype = $(template);
+
+            deleteButton($prototype);
+
 
             $container.append($prototype);
 

@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Image;
+use App\Entity\Keyword;
 use App\Entity\Livres;
 use App\Form\LivresType;
 use App\Repository\LivresRepository;
 use App\Services\imageHandler;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -109,6 +111,7 @@ class IndexController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
+
     /**
      * @Route ("/show/{id}", name="show")
      */
@@ -127,6 +130,20 @@ class IndexController extends AbstractController
     public function contact()
     {
         return $this->render('home/contact.html.twig');
+    }
+
+    /**
+     * @Route ("delete/keyword/{id}", name="delete_keyword",
+     *     methods={"POST"},
+     *     condition="request.headers.get('X-Requested-With') matches '/XMLHttpRequest/i'")
+     */
+
+    public function deleteKeyword(Keyword $keyword, EntityManagerInterface $entityManager)
+    {
+        $entityManager->remove($keyword);
+        $entityManager->flush();
+
+        return new JsonResponse();
     }
 
 
