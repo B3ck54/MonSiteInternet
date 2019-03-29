@@ -21,7 +21,7 @@ class LivresType extends AbstractType
         $builder
             ->add('titre', TextType::class)
             ->add('auteur',TextType::class)
-            ->add('resume', TextareaType::class,['label' => 'Résumé'])
+            ->add('resume', TextareaType::class)
             ->add('prix',NumberType::class)
 
             ->add('editions', EntityType::class, [
