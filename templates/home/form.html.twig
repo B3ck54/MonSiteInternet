@@ -50,8 +50,14 @@
     </div>
 
 
-    </br>
-        </br>
+        <span style="color: red"><strong>{{ form_errors(form.editions) }}</strong></span>
+        {{ form_label(form.categorie) }}
+        {{ form_widget(form.categorie) }}
+        <span style="color: red"><strong>{{ form_errors(form.categorie) }}</strong></span>
+        {{ form_label(form.etat) }}
+        {{ form_widget(form.etat) }}
+        <span style="color: red"><strong>{{ form_errors(form.etat) }}</strong></span>
+
 
 </div>
 

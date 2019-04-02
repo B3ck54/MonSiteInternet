@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -37,6 +38,17 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $enable = false;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Livres", mappedBy="user", cascade={"remove"})
+     */
+    private $livres;
+
+    public function __construct()
+    {
+        $this->livres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -118,6 +130,19 @@ class User implements UserInterface
         $this->enable = $enable;
 
         return $this;
+    }
+
+    public function getLivre()
+    {
+        return $this->livres;
+    }
+
+    public function addLivres($livre): void
+    {
+        if(!$this->livres->contains($livre)){
+            $this->livres->add($livre);
+            $livre->setUser($this);
+        }
     }
 
     /**

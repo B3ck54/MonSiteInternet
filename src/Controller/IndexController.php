@@ -46,6 +46,9 @@ class IndexController extends AbstractController
             // récupére les valeurs soumises sous forme d'objet Livre - je récupère mon livre
             $livre = $form->getData(); // recupération du formulaire soumis qu'on stocke ds la variable $livre
 
+            //on doit ajouter l'utilisateur courant / l'utilisateur connecté
+            $user = $this->getUser();
+            $livre->setUser($user);
 
             // récupère l'image qui se trouve dans le formulaire soumis
             /** @var Image $image */
@@ -75,6 +78,7 @@ class IndexController extends AbstractController
     public function edit(Livres $livre, EntityManagerInterface $manager, Request $request)
     {
 
+        $this->denyAccessUnlessGranted('EDIT', $livre);//pour empecher de recuperer l'id d'un autre livre et de le modifier
         $form = $this->createForm(LivresType::class, $livre);
         $form->handleRequest($request);
 
@@ -104,6 +108,8 @@ class IndexController extends AbstractController
      * @Route("livre/delete/{id}", name="delete")
      */
       public function remove (EntityManagerInterface $manager,Livres $livres) {
+
+        $this->denyAccessUnlessGranted('EDIT', $livres); //pour empecher de recuperer l'id d'un autre livre et de l'effacer
 
         $manager->remove($livres);
         $manager->flush();

@@ -19,7 +19,9 @@ class LivresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', TextType::class)
+            ->add('titre', TextType::class,[
+                'label' => 'Titre',
+            ])
             ->add('auteur',TextType::class)
             ->add('resume', TextareaType::class)
             ->add('prix',NumberType::class)
@@ -38,7 +40,7 @@ class LivresType extends AbstractType
             ])
             ->add('etat', ChoiceType::class, [
                 'choices' =>
-                    array_combine( SearchLivreType::ETAT, SearchLivreType::ETAT)
+                            array_combine( SearchLivreType::ETAT, SearchLivreType::ETAT)
             ])
             //pour le formulaire ajout de keywords
             ->add('keywords', CollectionType::class,[

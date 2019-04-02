@@ -95,7 +95,11 @@ class Livres
      */
     private $etat;
 
-
+    //*****************************************COURS MANY TO ONE*********************************************//
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="livres")
+     */
+    private $user;
 
     //initialisation du tableau $keywords
     public function __construct()
@@ -237,6 +241,18 @@ class Livres
         $this->etat = $etat;
 
         return $this;
+    }
+
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+    public function setUser($user) :void
+    {
+        $this->user = $user;
     }
 
 
