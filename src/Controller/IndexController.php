@@ -32,7 +32,7 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("livre/add", name="add")
+     * @Route("/livre/add", name="add")
      */
     public function add(EntityManagerInterface $manager,Request $request, ImageHandler $handler) //autowiring
     {
@@ -69,7 +69,7 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit")
+     * @Route("/livre/edit/{id}", name="edit")
      *
      */
     public function edit(Livres $livre, EntityManagerInterface $manager, Request $request)
@@ -101,7 +101,7 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("livre/delete/{id}", name="delete")
      */
       public function remove (EntityManagerInterface $manager,Livres $livres) {
 
@@ -124,13 +124,8 @@ class IndexController extends AbstractController
 
 
 
-    /**
-     * @Route ("/contact",name="contact")
-     */
-    public function contact()
-    {
-        return $this->render('home/contact.html.twig');
-    }
+
+
 
     /**
      * @Route ("delete/keyword/{id}", name="delete_keyword",

@@ -9,10 +9,29 @@
        <h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
         {% endfor %}
     <div>
-    </br>
-    <a href="{{ path('add') }}" class="btn btn-primary">Ajouter</a></div>
-        <br>
-    <a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a></div>
+        </br>
+    {% if is_granted ('ROLE_USER') %}
+    <a href="{{ path('add') }}" class="btn btn-primary">Ajouter</a>
+    </div>
+    {% endif %}
+        </br>
 
+    <div>
+    <a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a>
+    </div>
+        </br>
+    <div>
+    {% if is_granted ('ROLE_ADMIN') %}
+        <a href="{{ path('admin') }}" class="btn btn-primary">Admin</a>
+    </div>
+    {% endif %}
+        </br>
+     <div>
+    <a href="{{ path('registration') }}" class="btn btn-primary">Inscription</a>
+    </div>
+        </br>
+    <div>
+        <a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
+    </div>
 </div>
 {% endblock %}

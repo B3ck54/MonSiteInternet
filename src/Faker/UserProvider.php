@@ -6,6 +6,8 @@ use Faker\Generator;
 use Faker\Provider\Base;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
+// d'où vient l'utilisateur
 class UserProvider extends Base
 {
     private $passwordEncoder;

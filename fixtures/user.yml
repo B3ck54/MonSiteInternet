@@ -3,9 +3,11 @@ App\Entity\User:
     email: admin@email.fr
     roles: ['ROLE_ADMIN']
     password: '<encodePassword(admin)>'
+    enable: true
 
   user:
     email: user@email.fr
     roles: ['ROLE_USER']
     password: '<encodePassword(user)>'
+    enable: true
 

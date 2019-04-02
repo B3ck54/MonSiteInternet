@@ -13,6 +13,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Twig\Environment;
 
 class MaintenanceSubscriber implements EventSubscriberInterface // on implemente l'interface - on définit un contrat avec l'EventSubscriberInterface
     //class pour enregister un event
@@ -20,7 +21,7 @@ class MaintenanceSubscriber implements EventSubscriberInterface // on implemente
 
     private $twig;
 
-    public function __construct(\Twig_Environment $twig)
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig; // pour la vue on récupère twig en l'injectant dans le constructeur
     }
