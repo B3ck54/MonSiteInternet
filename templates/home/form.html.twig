@@ -1,64 +1,95 @@
 {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
-<div class="input-field col s12">
-    <label>Titre</label>
-    {{ form_widget(form.titre) }}
-    </br>
-    </br>
-    <label>Auteur</label>
-    {{ form_widget(form.auteur) }}
-    </br>
-    </br>
-    <label>Résumé</label>
-    {{ form_widget(form.resume) }}
-    </br>
-    </br>
-    <label>Prix</label>
-    {{ form_widget(form.prix) }}
-    </br>
-    </br>
+<div class ="jumbotron">
+    <div class="col s8">
+        {{ form_label(form.titre, 'Titre :') }}
+        {{ form_widget(form.titre) }}
+        <span style="color: red"><strong>{{ form_errors(form.titre) }}</strong></span>
+    </div>
 
-    <button class="addKeyword btn btn-primary">Ajouter un mot-clé</button>
-        <div class=".error-delete-keyword" style="display: none">
-            <div class="card-panel">
-                <span class="red-text text-darken-2">Erreur lors de la suppression du mot-clé</span>
+        </br>
+        </br>
+
+    <div class="col s8">
+        {{ form_label(form.auteur, 'Auteur :') }}
+        {{ form_widget(form.auteur) }}
+        <span style="color: red"><strong>{{ form_errors(form.auteur) }}</strong></span>
+    </div>
+
+        </br>
+        </br>
+
+    <div class="col s8">
+        {{ form_label(form.resume, 'Résumé :') }}
+        {{ form_widget(form.resume) }}
+        <span style="color: red"><strong>{{ form_errors(form.resume) }}</strong></span>
+    </div>
+
+        </br>
+        </br>
+
+    <div class="col s8">
+        {{ form_label(form.prix, 'Prix :') }}
+        {{ form_widget(form.prix) }}
+        <span style="color: red"><strong>{{ form_errors(form.prix) }}</strong></span>
+    </div>
+
+        </br>
+        </br>
+
+    <div class="col s8">
+        {{ form_widget(form.keywords) }}
+        </br>
+        </br>
+        <button class="addKeyword btn btn-primary">Ajouter un mot-clé</button>
+            <div class=".error-delete-keyword" style="display: none">
+                <div class="card-panel">
+                    <span class="red-text text-darken-2">Erreur lors de la suppression du mot-clé</span>
+                </div>
             </div>
-        </div>
+    </div>
 
-    {{ form_widget(form.keywords) }}
-    {#si j'ai une image je l'affiche#}
-    {#On récupère l'image courante#}
-    {#On récupère l'id - Si l'id de mon image est défini à ce moment je l'affiche#}
+        {#si j'ai une image je l'affiche#}
+        {#On récupère l'image courante#}
+        {#On récupère l'id - Si l'id de mon image est défini à ce moment je l'affiche#}
+
+    </br>
+    </br>
+
+
+    <div class="col s8">
+    <div class="form-group">
+        {{ form_label(form.editions) }}
+        {{ form_widget(form.editions) }}
+        <span style="color: red"><strong>{{ form_errors(form.editions) }}</strong></span>
+    </div>
 
     <div class="form-group">
-        <label for="exampleSelect1">Editions</label>
-           {{ form_widget(form.editions) }}
-        </select>
-    </div>
-
-
-    <div class="file-field input-field">
-        {% if form.image.vars.value.id is defined %}
-            <img src="{{ asset('images/')~form.image.vars.value.name }}" class="responsive-img">
-        {% endif %}
-        <div class="btn">
-            <span>{{ (form.image.vars.value.name is defined) ? "Modifier l'" : "Ajouter une "}} image</span>
-            {{ form_row(form.image) }}
-        </div>
-        <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-        </div>
-    </div>
-
-
-        <span style="color: red"><strong>{{ form_errors(form.editions) }}</strong></span>
         {{ form_label(form.categorie) }}
         {{ form_widget(form.categorie) }}
         <span style="color: red"><strong>{{ form_errors(form.categorie) }}</strong></span>
+    </div>
+    <div class="form-group">
         {{ form_label(form.etat) }}
         {{ form_widget(form.etat) }}
         <span style="color: red"><strong>{{ form_errors(form.etat) }}</strong></span>
+    </div>
+    </div>
 
+    <div class="col s8">
+        <div class="input-group-append">
+            {% if form.image.vars.value.id is defined %}
+                <img src="{{ asset('images/')~form.image.vars.value.name }}" class="responsive-img">
+                <a href="#" class="delete-image btn waves-effects waves-light red">Supprimer</a>
+            {% endif %}
+                <div class="col s8">
+                    <span class="align">{{ (form.image.vars.value.name is defined) ? "Modifier l'" : "Ajouter une "}} image</span>
+                    {{ form_row(form.image) }}
+                </div>
+            {#<div class="file-path-wrapper">#}
+                {#<input class="file-path validate" type="text">#}
+            {#</div>#}
+        </div>
+    </div>
 
-</div>
 
 

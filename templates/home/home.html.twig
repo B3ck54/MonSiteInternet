@@ -2,7 +2,7 @@
 
 
 {% block body %}
-<div class="jumbotron">
+<div class="container">
     <legend>Livres</legend>
     <div class="active" >
         {% for livre in livres %}
@@ -27,11 +27,24 @@
     {% endif %}
         </br>
      <div>
-    <a href="{{ path('registration') }}" class="btn btn-primary">Inscription</a>
+         {% if app.user is null %} {#si l'utilisateur courant est null = je ne suis pas connecté je suis anonyme#}
+         <a href="{{ path('registration') }}" class="btn btn-primary">Inscription</a>
     </div>
         </br>
     <div>
         <a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
     </div>
-</div>
+        {% endif %}
+
+        {% if is_granted ('ROLE_USER') %}
+        <a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
+        {% endif %}
+
+        {% if is_granted ('ROLE_USER') %}
+            <a href="{{ path('dashboard') }}" class="btn btn-primary">Dashboard</a>
+        {% endif %}
+
+
+
+    </div>
 {% endblock %}

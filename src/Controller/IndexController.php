@@ -38,7 +38,7 @@ class IndexController extends AbstractController
     {
         $path=$this->getParameter('kernel.project_dir').'/public/images'; //récupère la racine du projet
 
-        $form = $this->createForm(LivresType::class);
+        $form = $this->createForm(LivresType::class, null, ['path' => $path]);
         $form ->handleRequest($request);
 
         if ($form->IsSubmitted() && $form->isValid()){
@@ -50,13 +50,13 @@ class IndexController extends AbstractController
             $user = $this->getUser();
             $livre->setUser($user);
 
-            // récupère l'image qui se trouve dans le formulaire soumis
-            /** @var Image $image */
-            $image = $livre->getImage();
-
-            //J'appelle la méthode handler
-            // j'envoie dans les param de ma fonction cette image et le chemin
-            $image->setPath($path);
+//            // récupère l'image qui se trouve dans le formulaire soumis
+//            /** @var Image $image */
+//            $image = $livre->getImage();
+//
+//            //J'appelle la méthode handler
+//            // j'envoie dans les param de ma fonction cette image et le chemin
+//            $image->setPath($path);
             $manager->persist($livre);
             $manager->flush();
 
@@ -77,16 +77,16 @@ class IndexController extends AbstractController
      */
     public function edit(Livres $livre, EntityManagerInterface $manager, Request $request)
     {
-
+        $path=$this->getParameter('kernel.project_dir').'/public/images';
+        $form = $this->createForm(LivresType::class,$livre, ['path' => $path]);
         $this->denyAccessUnlessGranted('EDIT', $livre);//pour empecher de recuperer l'id d'un autre livre et de le modifier
-        $form = $this->createForm(LivresType::class, $livre);
+
         $form->handleRequest($request);
 
         if ($form->IsSubmitted() && $form->isValid()) {
             $path=$this->getParameter('kernel.project_dir').'/public/images'; //récupère la racine du projet
 
-            $image = $form->getData()->getImage();
-            $image->setPath($path);
+
             $manager->flush();
 
             $this->addFlash(

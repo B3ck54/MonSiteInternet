@@ -1,0 +1,16 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+
+    <legend>Livres</legend>
+    <div class="active" >
+    {% for livre in livres %}
+        <h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
+        <a href="{{ path('edit', {'id': livre.id }) }}" class="badge badge-primary">Modifier</a>
+        <a href="{{ path('delete', {'id': livre.id }) }}" class="badge badge-primary">Supprimer</a>
+        <a href="{{ path('add') }}"  class="badge badge-primary">Ajouter</a>
+
+
+    {% endfor %}
+
+{% endblock %}

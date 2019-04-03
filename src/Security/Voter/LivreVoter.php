@@ -28,6 +28,11 @@ class LivreVoter extends Voter
             return false;
         }
 
+        if($user -> isAdmin())
+        {
+            return true;
+        }
+
         if (null == $livre->getUser())
         {
             return false;

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SearchController extends AbstractController
 {
     /**
-     * @Route("/livre/search", name="search_livre")
+     * @Route("/search/livre", name="search_livre")
      */
     public function searchCar(Request $request, LivresRepository $livresRepository)
     {
