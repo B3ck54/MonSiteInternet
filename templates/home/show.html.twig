@@ -51,7 +51,10 @@
             {% if is_granted ('EDIT',livre) %}
             <a href="{{ path('edit', {'id': livre.id }) }}" class="badge badge-primary">Modifier</a>
             {% endif %}
+
+            {% if is_granted ('EDIT',livre) %}
             <a href="{{ path('delete', {'id': livre.id }) }}" class="badge badge-primary">Supprimer</a>
+            {% endif %}
         </p>
         <a class="btn btn-primary btn-lg" href="{{ path('home') }}" role="button">Retour</a>
 
