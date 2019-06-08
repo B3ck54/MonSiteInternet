@@ -4,11 +4,11 @@
 {% block body %}
     <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="col m12">
-    <h1> Admin Page </h1>
+    <h2> Admin Page </h2>
 
     {% if users|length > 0 %}
 
-            <h1>{{ users|length }} utilisateur </h1>
+            <h3>{{ users|length }} utilisateurs </h3>
 
             <table class ="striped">
                 <thead>
@@ -32,6 +32,9 @@
         {% endfor %}
     </tbody>
             </table>
+            {% endif %}
+            {% if is_granted ('ROLE_USER') %}
+            <a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
             {% endif %}
         </div>
     </div>

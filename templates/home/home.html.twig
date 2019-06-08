@@ -3,23 +3,11 @@
 
 {% block body %}
 <div class="container">
-    <legend>Livres</legend>
-    <div class="active" >
-        {% for livre in livres %}
-       <h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
-        {% endfor %}
-    <div>
-        </br>
     {% if is_granted ('ROLE_USER') %}
     <a href="{{ path('add') }}" class="btn btn-primary">Ajouter</a>
     </div>
     {% endif %}
-        </br>
-
-    <div>
-    <a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a>
-    </div>
-        </br>
+    
     <div>
     {% if is_granted ('ROLE_ADMIN') %}
         <a href="{{ path('admin') }}" class="btn btn-primary">Admin</a>
@@ -39,12 +27,23 @@
         {% if is_granted ('ROLE_USER') %}
         <a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
         {% endif %}
+        </br>
+
+        <div>
+            <a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a>
+        </div>
+        </br>
 
         {% if is_granted ('ROLE_USER') %}
             <a href="{{ path('dashboard') }}" class="btn btn-primary">Dashboard</a>
         {% endif %}
 
-
+        <legend>Liste des livres disponibles : </legend>
+        <div class="active" >
+            {% for livre in livres %}
+           <h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
+            {% endfor %}
+        <div>
 
     </div>
 {% endblock %}
