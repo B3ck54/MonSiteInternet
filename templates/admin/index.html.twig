@@ -1,43 +1,69 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
     <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="col m12">
-    <h2> Admin Page </h2>
+            <h2> Admin Page </h2>
 
-    {% if users|length > 0 %}
+            {% if users|length > 0 %}
+                <h3>{{ users|length }} utilisateurs </h3>
+                <table class ="striped">
+                    <thead>
+                        <tr>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
 
-            <h3>{{ users|length }} utilisateurs </h3>
+                    <tbody>
+                        <tr>
+                        {% for user in users %}
+                            <tr>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.roles | join(',') }}</td>
 
-            <table class ="striped">
-                <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
+                            {% if app.user.id != user.id %}
+                                <td><a href="{{ path("delete_user", {id : user.id}) }}" class="red lighten-1 waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer</a></td>
+                            {% endif %}
 
-<tbody>
-    <tr>
-        {% for user in users %}
-            <tr>
-            <td>{{ user.email }}</td>
-            <td>{{ user.roles | join(',') }}</td>
-        {% if app.user.id != user.id %}
-            <td><a href="{{ path("delete_user", {id : user.id}) }}" class="red lighten-1 waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer</a></td>
-        {% endif %}
-            </tr>
-        {% endfor %}
-    </tbody>
-            </table>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% endif %}
+
+            {% if livres|length > 0 %}
+                <h3>{{ livres|length }} livres </h3>
+                <table class ="striped">
+                    <thead>
+                        <tr>
+                        <th>id</th>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                        {% for livre in livre %}
+                            <tr>
+                            <td>{{ livre.id }}</td>
+                            <td>{{ livre.titre | join(',') }}</td>
+                            <td>{{ livre.auteur | join(',') }}</td>
+
+                            {% if app.livre.id != livre.id %}
+                                <td><a href="{{ path("delete_livre", {id : livre.id}) }}" class="red lighten-1 waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer</a></td>
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
             {% if is_granted ('ROLE_USER') %}
-            <a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
+                <a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
             {% endif %}
         </div>
-    </div>
-    </div>
     </div>
 {% endblock %}

@@ -1,49 +1,56 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 <div class="container">
-    {% if is_granted ('ROLE_USER') %}
-    <a href="{{ path('add') }}" class="btn btn-primary">Ajouter</a>
-    </div>
-    {% endif %}
-    
-    <div>
-    {% if is_granted ('ROLE_ADMIN') %}
-        <a href="{{ path('admin') }}" class="btn btn-primary">Admin</a>
-    </div>
-    {% endif %}
-        </br>
-     <div>
-         {% if app.user is null %} {#si l'utilisateur courant est null = je ne suis pas connecté je suis anonyme#}
-         <a href="{{ path('registration') }}" class="btn btn-primary">Inscription</a>
-    </div>
-        </br>
-    <div>
-        <a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
-    </div>
-        {% endif %}
+	<div>
+		{% if is_granted ('ROLE_ADMIN') %}
+		<a href="{{ path('admin') }}" class="btn btn-primary">Admin</a>
+	</div>
+	{% endif %}
+	</br>
 
-        {% if is_granted ('ROLE_USER') %}
-        <a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
-        {% endif %}
-        </br>
+	
+{% if is_granted ('ROLE_USER') %}
+<a href="{{ path('dashboard') }}" class="btn btn-primary">Dashboard</a>
+{% endif %}
+</br>
 
-        <div>
-            <a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a>
-        </div>
-        </br>
+	<div>
+		{% if app.user is null %} {#si l'utilisateur courant est null = je ne suis pas connecté je suis anonyme#}
+		<a href="{{ path('registration') }}" class="btn btn-primary">Inscription</a>
+	</div>
+	</br>
 
-        {% if is_granted ('ROLE_USER') %}
-            <a href="{{ path('dashboard') }}" class="btn btn-primary">Dashboard</a>
-        {% endif %}
+	<div>
+		<a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
+	</div>
+	{% endif %}
+	</br>
 
-        <legend>Liste des livres disponibles : </legend>
-        <div class="active" >
-            {% for livre in livres %}
-           <h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
-            {% endfor %}
-        <div>
+	{% if is_granted ('ROLE_USER') %}
+	<a href="{{ path('add') }}" class="btn btn-primary">Ajouter</a>
+</div>
+{% endif %}
+<!--  -->
+</br>
 
-    </div>
-{% endblock %}
+<div>
+	<a href="{{ path('search_livre') }}" class="btn btn-primary">Recherche avancée</a>
+</div>
+</br>
+
+{% if is_granted ('ROLE_USER') %}
+<a href="{{ path('logout') }}" class="btn btn-primary">Déconnexion</a>
+{% endif %}
+</br>
+
+
+<legend>Liste des livres disponibles : </legend>
+<div class="active">
+	{% for livre in livres %}
+	<h5> <a href="{{ path('show', {'id' : livre.id}) }}">{{ livre.titre }}</a></h5>
+	{% endfor %}
+	<div>
+
+	</div>
+	{% endblock %}

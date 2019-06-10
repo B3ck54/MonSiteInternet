@@ -28,13 +28,16 @@ class LivresType extends AbstractType
             ->add('resume', TextareaType::class)
             ->add('prix',NumberType::class)
 
-            ->add('editions', EntityType::class, [
-                'label' => 'Editions :',
-                'class'=> Edition::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => false,
+            // ->add('editions', EntityType::class, [
+            //     'class' => Edition::class, // on lui passe des objets de type Edition
+            //     'choice_label' => 'name', // c'est ce qu'on passe dans le label
+            // ])
 
+            ->add('editions', CollectionType::class,[
+                'entry_type' => EditionType::class, //type de formulaire
+                'allow_add' => true, //cela veut dire qu'on a le droit d'en ajouter
+                'by_reference' => false, // forcer la soumission du formulaire a appeler cette méthode addKeyword
+                'label' => 'Editions'
             ])
 
             ->add('categorie', ChoiceType::class, [

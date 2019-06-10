@@ -81,7 +81,7 @@ class Livres
     private $keywords;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Edition", inversedBy="livres")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Edition", inversedBy="livres",cascade={"persist", "remove"})
      */
     private $editions;
 
@@ -205,6 +205,8 @@ class Livres
     {
         if (!$this->editions->contains($edition)) {
             $this->editions[] = $edition;
+            $edition->addLivre($this);
+
         }
 
         return $this;
@@ -214,6 +216,8 @@ class Livres
     {
         if ($this->editions->contains($edition)) {
             $this->editions->removeElement($edition);
+            $edition->removeLivre($this);
+
         }
 
         return $this;

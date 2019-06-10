@@ -34,7 +34,7 @@ class IndexController extends AbstractController
     /**
      * @Route("/livre/add", name="add")
      */
-    public function add(EntityManagerInterface $manager,Request $request, ImageHandler $handler) //autowiring
+    public function add (EntityManagerInterface $manager,Request $request, ImageHandler $handler) //autowiring
     {
         $path=$this->getParameter('kernel.project_dir').'/public/images'; //récupère la racine du projet
 
@@ -50,13 +50,6 @@ class IndexController extends AbstractController
             $user = $this->getUser();
             $livre->setUser($user);
 
-//            // récupère l'image qui se trouve dans le formulaire soumis
-//            /** @var Image $image */
-//            $image = $livre->getImage();
-//
-//            //J'appelle la méthode handler
-//            // j'envoie dans les param de ma fonction cette image et le chemin
-//            $image->setPath($path);
             $manager->persist($livre);
             $manager->flush();
 
@@ -84,8 +77,8 @@ class IndexController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->IsSubmitted() && $form->isValid()) {
+            
             $path=$this->getParameter('kernel.project_dir').'/public/images'; //récupère la racine du projet
-
 
             $manager->flush();
 

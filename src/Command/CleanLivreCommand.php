@@ -47,7 +47,7 @@ class CleanLivreCommand extends Command
         }
 
         $this->entityManager->flush();
-         $output->writeln("<info> Les voitures ont bien été supprimées</info>");
+         $output->writeln("<info> Les livres ont bien été supprimés</info>");
 
 
 

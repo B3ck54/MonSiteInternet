@@ -9,6 +9,14 @@
         <p>N° : {{ livre.id }}</p>
         <h3 >Votre livre : {{ livre.titre }}</h3> <h1><strong></strong></h1>
         <p class="lead">Ecrit par {{ livre.auteur }}</p>
+
+
+        {%  if livre.editions |length > 0 %}
+        <p> <strong>Editions :</strong>
+        {% for edition in livre.editions %}<a class="badge badge-info">&nbsp;&nbsp;{{ edition.name}}&nbsp;&nbsp;{% endfor %}</a>
+        </p>
+        {% endif %}
+        
         <hr class="my-4">
 
         {#************************************IMAGE************************************#}

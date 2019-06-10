@@ -62,7 +62,7 @@ class Edition
     {
         if (!$this->livres->contains($livre)) {
             $this->livres[] = $livre;
-            $livre->addEdition($this);
+
         }
 
         return $this;
@@ -72,7 +72,7 @@ class Edition
     {
         if ($this->livres->contains($livre)) {
             $this->livres->removeElement($livre);
-            $livre->removeEdition($this);
+
         }
 
         return $this;

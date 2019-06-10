@@ -11,7 +11,6 @@
      </br>
          {{ form_end(form) }}
 
-
     <hr class="my-4">
     <a class="btn btn-primary btn-lg" href="{{ path('home') }}" role="button">Retour</a>
     </div>
@@ -35,16 +34,9 @@
                 addKeyword($container);
             })
 
-
-
-
             $('.delete-image').click(function (e) {
                 $('.responsive-img').remove();
             });
-
-
-
-
 
             $('.delete-keyword').click(function (e) {
                 let path = $(this).attr('data-delete-path');
@@ -62,7 +54,6 @@
                         $('.error-delete-keyword').css('display', 'block');
                     }
                 })
-
             });
 
             if(index==0){ //index c'est le nombre d'input -> si j'ai pas de keyword on en rajoute un

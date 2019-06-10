@@ -48,7 +48,7 @@ class SecurityController extends AbstractController
 
             $passwordEncoded = $passwordEncoder->encodePassword($user,$user->getPassword()); //j'encode le password
             $user->setPassword($passwordEncoded); // je set le password
-            $user->setRoles(['ROLE_ADMIN']); // je set le rôle
+            $user->setRoles(['ROLE_USER']); // je set le rôle
 
             //je crée un token
             $token = new Token($user); // on est obligé de lui passer un user en parametre sinon ça ne marchera pas

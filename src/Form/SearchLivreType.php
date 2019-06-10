@@ -21,6 +21,8 @@ class SearchLivreType extends AbstractType
         'Biographie',
         'Science-Fiction',
         'Fantastique',
+        'Développement web',
+        'Programmation'
     ];
 
     const ETAT = [
@@ -31,21 +33,7 @@ class SearchLivreType extends AbstractType
         'Mauvais état'
     ];
 
-    const EDITIONS = [
-        'Toutes les éditions',
-        'J\'aime lire' ,
-        'Folio',
-        'J\'ai lu',
-        'Librio',
-        'Les Editions de minuit',
-        'Pour les nuls',
-        'Livre de poche',
-        'Pocket',
-        'Eyrolles',
-        'Hachette',
-        'Larousse',
-    ];
-
+ 
     const PRICE =
         [1,5,10,15,20,25,30,35,40,45,50,];
 
@@ -69,17 +57,11 @@ class SearchLivreType extends AbstractType
                 'choices' =>
                     array_combine( self::ETAT, self::ETAT)
             ])
-//            ->add('editions', EntityType::class, [
-//                'class'=> Edition::class,
-//                'choice_label' => 'name'
-//            ])
-
-            ->add('editions', ChoiceType::class, [
-                'choices' =>
-                    array_combine( self::EDITIONS, self::EDITIONS),
-
+            
+            ->add('editions', EntityType::class, [
+                'class' => Edition::class, // on lui passe des objets de type Edition
+                'choice_label' => 'name', // c'est ce qu'on passe dans le label
             ])
-
 
             ->add('minimumPrice',ChoiceType::class, [
                 'label' => 'Prix minimum',
